@@ -24,8 +24,23 @@ text.insert("end", "---------------------- Spo", "part1")
 text.tag_configure("part2", foreground="#FF0000")
 text.insert("end", "tube ----------------------", "part2")
 
-buttonExit = Button(window, text="Exit", font=("Comic Sans MS", 20), bg="#FFFFFF", fg="#000000", width=10, height=1, command=window.destroy)
-buttonExit.place(relx=0.5, rely=0.83, anchor=CENTER)
+label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#000000", fg="#1ED760")
+label.place(relx=0.5, rely=0.26, anchor=CENTER)
+
+youtube_playlist_id_entry = Entry(window, font=("Comic Sans MS", 20), justify="center")
+youtube_playlist_id_entry.place(relx=0.5, rely=0.36, anchor=CENTER)
+
+label = Label(text="YouTube", font=("Comic Sans MS", 20), bg="#000000", fg="#FF0000")
+label.place(relx=0.5, rely=0.48, anchor=CENTER)
+
+spotify_user_id_entry = Entry(window, font=("Comic Sans MS", 20), justify="center")
+spotify_user_id_entry.place(relx=0.5, rely=0.58, anchor=CENTER)
+
+buttonSubmit = Button(window, text="Sumbit", font=("Comic Sans MS", 18), bg="#FFFFFF", fg="#000000", width=10, height=1)
+buttonSubmit.place(relx=0.5, rely=0.78, anchor=CENTER)
+
+buttonExit = Button(window, text="Exit", font=("Comic Sans MS", 18), bg="#FFFFFF", fg="#000000", width=10, height=1, command=window.destroy)
+buttonExit.place(relx=0.5, rely=0.90, anchor=CENTER)
 
 text.pack(pady=60)
 
