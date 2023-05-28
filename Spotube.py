@@ -14,17 +14,23 @@ def get_youtube_playlist(youtube_playlist_id):
     youtube = build('youtube', 'v3', developerKey='AIzaSyAx3Y6F7GfEl5MkQQgVddx2l8VOuLMXnGU')
     request = youtube.playlistItems().list(
         part='snippet',
-        maxResults=100,
+        maxResults=50,
         playlistId=youtube_playlist_id
     )
-    response = request.execute()
-    return [item['snippet']['title'] for item in response['items']]
+    all_items = []
+    while request is not None:
+        response = request.execute()
+        all_items.extend(item['snippet']['title'] for item in response['items'])
+        request = youtube.playlistItems().list_next(request, response)
+    return all_items
 
 def create_spotify_playlist(spotify_user_id, track_uris):
     scope = 'playlist-modify-public'
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, client_id="612210be399a424788083d9bcb443bfd", client_secret="abb9b871ac1d4742b04b678285a1834f", redirect_uri="http://localhost:8888/callback"))
-    playlist = sp.user_playlist_create(spotify_user_id, "New Playlist from YouTube")
-    results = sp.playlist_add_items(playlist['id'], track_uris)
+    playlist = sp.user_playlist_create(spotify_user_id, "Music")
+    chunks = [track_uris[i:i + 100] for i in range(0, len(track_uris), 100)]
+    for chunk in chunks:
+        results = sp.playlist_add_items(playlist['id'], chunk)
 
 def convert_playlist():
     youtube_playlist_id = youtube_playlist_id_entry.get()
