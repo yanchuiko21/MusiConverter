@@ -51,13 +51,13 @@ window.iconphoto(True, icon)
 label = Label(text="---------------------- Spotube ----------------------", font=("Comic Sans MS", 20), bg="#000000", fg="#FFFFFF")
 label.place(relx=0.5, rely=0.12, anchor=CENTER)
 
-label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#000000", fg="#00d204")
+label = Label(text="YouTube", font=("Comic Sans MS", 20), bg="#000000", fg="#ff0000")
 label.place(relx=0.5, rely=0.26, anchor=CENTER)
 
 youtube_playlist_id_entry = Entry(window, font=("Comic Sans MS", 20), justify="center")
 youtube_playlist_id_entry.place(relx=0.5, rely=0.36, anchor=CENTER)
 
-label = Label(text="YouTube", font=("Comic Sans MS", 20), bg="#000000", fg="#ff0000")
+label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#000000", fg="#00d204")
 label.place(relx=0.5, rely=0.48, anchor=CENTER)
 
 spotify_user_id_entry = Entry(window, font=("Comic Sans MS", 20), justify="center")
