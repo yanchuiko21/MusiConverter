@@ -48,22 +48,22 @@ def convert_playlist():
 window = Tk()
 window.geometry("600x600")
 window.title("Spotube")
-window.configure(background="#000000")
+window.configure(background="#ADB5BD")
 center_window(window, 600, 600)
 
 icon = PhotoImage(file='C:\Visual Studio Code\Project\Python\Spotube\icon.png')
 window.iconphoto(True, icon)
 
-label = Label(text="---------------------- Spotube ----------------------", font=("Comic Sans MS", 20), bg="#000000", fg="#FFFFFF")
+label = Label(text="---------------------- Spotube ----------------------", font=("Comic Sans MS", 20), bg="#ADB5BD", fg="#000000")
 label.place(relx=0.5, rely=0.12, anchor=CENTER)
 
-label = Label(text="YouTube", font=("Comic Sans MS", 20), bg="#000000", fg="#ff0000")
+label = Label(text="YouTube", font=("Comic Sans MS", 20), bg="#ADB5BD", fg="#DA2C38")
 label.place(relx=0.5, rely=0.26, anchor=CENTER)
 
 youtube_playlist_id_entry = Entry(window, font=("Comic Sans MS", 20), justify="center")
 youtube_playlist_id_entry.place(relx=0.5, rely=0.36, anchor=CENTER)
 
-label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#000000", fg="#00d204")
+label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#ADB5BD", fg="#2C6E49")
 label.place(relx=0.5, rely=0.48, anchor=CENTER)
 
 spotify_user_id_entry = Entry(window, font=("Comic Sans MS", 20), justify="center")
