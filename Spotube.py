@@ -17,11 +17,25 @@ def get_youtube_playlist(youtube_playlist_id):
         maxResults=50,
         playlistId=youtube_playlist_id
     )
+
     all_items = []
     while request is not None:
         response = request.execute()
-        all_items.extend(item['snippet']['title'] for item in response['items'])
+        for item in response['items']:
+            video_id = item['snippet']['resourceId']['videoId']
+            video_request = youtube.videos().list(
+                part='snippet',
+                id=video_id
+            )
+            video_response = video_request.execute()
+            if video_response['items']:
+                video_info = video_response['items'][0]['snippet']
+                title = video_info['title']
+                artist = video_info['channelTitle']
+                all_items.append((title, artist))
+        
         request = youtube.playlistItems().list_next(request, response)
+    
     return all_items
 
 def create_spotify_playlist(spotify_user_id, track_uris):
@@ -38,8 +52,10 @@ def convert_playlist():
     youtube_playlist = get_youtube_playlist(youtube_playlist_id)
     spotify_uris = []
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope='playlist-modify-public', client_id="612210be399a424788083d9bcb443bfd", client_secret="abb9b871ac1d4742b04b678285a1834f", redirect_uri="http://localhost:8888/callback"))
-    for song in youtube_playlist:
-        results = sp.search(q=song, limit=1)
+    for song, artist in youtube_playlist:
+        artist = artist.replace(" - Topic", "")  # Remove " - Topic" from the artist's name
+        query = f"track:{song} artist:{artist}"
+        results = sp.search(q=query, limit=1)
         if results['tracks']['items']:
             track = results['tracks']['items'][0]
             spotify_uris.append(track['uri'])
