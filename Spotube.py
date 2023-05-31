@@ -93,4 +93,11 @@ buttonSubmit.place(relx=0.5, rely=0.81, anchor=CENTER)
 buttonExit = Button(window, text="Exit", font=("Comic Sans MS", 18), bg="#FFFFFF", fg="#000000", width=10, height=1, command=window.destroy)
 buttonExit.place(relx=0.5, rely=0.92, anchor=CENTER)
 
+#TODO: Add Error Handling. Make this project a solid one.
+# youtube_error_label = Label(window, text="Wrong YouTube Music ID", font=("Comic Sans MS", 18), bg="#C7E2E6", fg="#000000")
+# youtube_error_label.place(relx=0.5, rely=0.69, anchor=CENTER)
+# + 
+# spotify_error_label = Label(window, text="Wrong Spotify ID", font=("Comic Sans MS", 18), bg="#C7E2E6", fg="#000000")
+# spotify_error_label.place(relx=0.5, rely=0.69, anchor=CENTER)
+
 window.mainloop()
