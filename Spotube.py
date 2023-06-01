@@ -117,6 +117,7 @@ buttonExit = Button(window, text="Exit", font=("Comic Sans MS", 18), bg="#FFFFFF
 buttonExit.place(relx=0.5, rely=0.92, anchor=CENTER)
 
 #TODO:
+# Rename: YouTube Music -> Spotify - In progress
 # Message: Empty YouTube playlist ID - Done
 # Message: Empty Spotify user ID - Done
 # Message: Invalid YouTube playlist ID - Done
