@@ -66,22 +66,22 @@ def convert_playlist():
 window = Tk()
 window.geometry("600x600")
 window.title("Spotube")
-window.configure(background="#C7E2E6")
+window.configure(background="#A3DBD5")
 center_window(window, 600, 600)
 
 icon = PhotoImage(file='C:\Visual Studio Code\Project\Python\Spotube\icon.png')
 window.iconphoto(True, icon)
 
-label = Label(text="---------------------- Spotube ----------------------", font=("Comic Sans MS", 20), bg="#C7E2E6", fg="#000000")
+label = Label(text="---------------------- Spotube ----------------------", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#000000")
 label.place(relx=0.5, rely=0.12, anchor=CENTER)
 
-label = Label(text="YouTube Music", font=("Comic Sans MS", 20), bg="#C7E2E6", fg="#DA2C38")
+label = Label(text="YouTube Music", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#E01006")
 label.place(relx=0.5, rely=0.26, anchor=CENTER)
 
 youtube_playlist_id_entry = Entry(window, font=("Comic Sans MS", 20), bg="#F0FCFF", justify="center")
 youtube_playlist_id_entry.place(relx=0.5, rely=0.36, anchor=CENTER)
 
-label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#C7E2E6", fg="#3A824E")
+label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#347546")
 label.place(relx=0.5, rely=0.48, anchor=CENTER)
 
 spotify_user_id_entry = Entry(window, font=("Comic Sans MS", 20), bg="#F0FCFF", justify="center")
@@ -94,7 +94,7 @@ buttonExit = Button(window, text="Exit", font=("Comic Sans MS", 18), bg="#FFFFFF
 buttonExit.place(relx=0.5, rely=0.92, anchor=CENTER)
 
 #TODO: Add Error Handling. Make this project a solid one. Update design of GUI.
-# youtube_error_label = Label(window, text="Wrong YouTube Music ID", font=("Comic Sans MS", 18), bg="#C7E2E6", fg="#000000")
+# youtube_error_label = Label(window, text="Wrong YouTube Music ID", font=("Comic Sans MS", 18), bg="#BEDBD7", fg="#000000")
 # youtube_error_label.place(relx=0.5, rely=0.69, anchor=CENTER)
 # + 
 # spotify_error_label = Label(window, text="Wrong Spotify ID", font=("Comic Sans MS", 18), bg="#C7E2E6", fg="#000000")
