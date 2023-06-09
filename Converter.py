@@ -88,23 +88,23 @@ def convert_playlist():
 # GUI
 window = Tk()
 window.geometry("600x600")
-window.title("Spotube")
+window.title("Converter")
 window.configure(background="#A3DBD5")
 center_window(window, 600, 600)
 
-icon = PhotoImage(file='C:\Visual Studio Code\Project\Python\Spotube\icon.png')
+icon = PhotoImage(file='C:\Visual Studio Code\Project\Python\Converter\icon.png')
 window.iconphoto(True, icon)
 
-label = Label(text="---------------------- Spotube ----------------------", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#000000")
+label = Label(text="---------------------- Converter ----------------------", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#000000")
 label.place(relx=0.5, rely=0.12, anchor=CENTER)
 
-label = Label(text="YouTube Music", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#E01006")
+label = Label(text="YouTube Music", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#FF0000")
 label.place(relx=0.5, rely=0.28, anchor=CENTER)
 
 youtube_playlist_id_entry = Entry(window, font=("Comic Sans MS", 20), bg="#F0FCFF", justify="center")
 youtube_playlist_id_entry.place(relx=0.5, rely=0.38, anchor=CENTER)
 
-label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#347546")
+label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#18AD4D")
 label.place(relx=0.5, rely=0.50, anchor=CENTER)
 
 spotify_user_id_entry = Entry(window, font=("Comic Sans MS", 20), bg="#F0FCFF", justify="center")
@@ -117,7 +117,7 @@ buttonExit = Button(window, text="Exit", font=("Comic Sans MS", 18), bg="#FFFFFF
 buttonExit.place(relx=0.5, rely=0.92, anchor=CENTER)
 
 #TODO:
-# Rename: YouTube Music -> Spotify - In progress
+# Color: Change - In progress
 # Message: Empty YouTube playlist ID - Done
 # Message: Empty Spotify user ID - Done
 # Message: Invalid YouTube playlist ID - Done
