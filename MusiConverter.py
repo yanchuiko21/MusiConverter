@@ -88,23 +88,23 @@ def convert_playlist():
 # GUI
 window = Tk()
 window.geometry("600x600")
-window.title("Converter")
-window.configure(background="#A3DBD5")
+window.title("MusiConverter")
+window.configure(background="#A4DBC0")
 center_window(window, 600, 600)
 
-icon = PhotoImage(file='C:\Visual Studio Code\Project\Python\Converter\icon.png')
+icon = PhotoImage(file='C:\Visual Studio Code\Project\Python\MusiConverter\icon.png')
 window.iconphoto(True, icon)
 
-label = Label(text="---------------------- Converter ----------------------", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#000000")
+label = Label(text="---------------------- MusiConverter ----------------------", font=("Comic Sans MS", 20), bg="#A4DBC0", fg="#000000")
 label.place(relx=0.5, rely=0.12, anchor=CENTER)
 
-label = Label(text="YouTube Music", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#FF0000")
+label = Label(text="YouTube Music", font=("Comic Sans MS", 20), bg="#A4DBC0", fg="#FF0000")
 label.place(relx=0.5, rely=0.28, anchor=CENTER)
 
 youtube_playlist_id_entry = Entry(window, font=("Comic Sans MS", 20), bg="#F0FCFF", justify="center")
 youtube_playlist_id_entry.place(relx=0.5, rely=0.38, anchor=CENTER)
 
-label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#A3DBD5", fg="#18AD4D")
+label = Label(text="Spotify", font=("Comic Sans MS", 20), bg="#A4DBC0", fg="#159442")
 label.place(relx=0.5, rely=0.50, anchor=CENTER)
 
 spotify_user_id_entry = Entry(window, font=("Comic Sans MS", 20), bg="#F0FCFF", justify="center")
@@ -116,8 +116,9 @@ buttonSubmit.place(relx=0.5, rely=0.81, anchor=CENTER)
 buttonExit = Button(window, text="Exit", font=("Comic Sans MS", 18), bg="#FFFFFF", fg="#000000", width=10, height=1, command=window.destroy)
 buttonExit.place(relx=0.5, rely=0.92, anchor=CENTER)
 
+window.mainloop()
+
 #TODO:
-# Color: Change - In progress
 # Message: Empty YouTube playlist ID - Done
 # Message: Empty Spotify user ID - Done
 # Message: Invalid YouTube playlist ID - Done
@@ -125,5 +126,3 @@ buttonExit.place(relx=0.5, rely=0.92, anchor=CENTER)
 # Message: YouTube API error message - In progress
 # Message: Spotify API error message - In progress
 # Message: Converation process complete message - Done
-
-window.mainloop()
