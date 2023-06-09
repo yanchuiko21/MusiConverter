@@ -54,17 +54,17 @@ def convert_playlist():
         spotify_user_id = spotify_user_id_entry.get()
         # Checking if the YouTube playlist ID is empty
         if not youtube_playlist_id:
-            messagebox.showerror("Error", "YouTube Music playlist ID is empty. Please check the ID and try again.")
+            messagebox.showerror("Error", "YouTube Music Playlist ID is empty. Please check the ID and try again.")
             return
         # Checking if the Spotify user ID is empty
         if not spotify_user_id:
-            messagebox.showerror("Error", "Spotify user ID is empty. Please check the ID and try again.")
+            messagebox.showerror("Error", "Spotify User ID is empty. Please check the ID and try again.")
             return
         # Checking if the YouTube playlist ID is valid
         try:
             youtube_playlist = get_youtube_playlist(youtube_playlist_id)
         except Exception as e:
-            messagebox.showerror("Error", "Invalid YouTube playlist ID. Please check the ID and try again.")
+            messagebox.showerror("Error", "Invalid YouTube Music Playlist ID. Please check the ID and try again.")
             return
         spotify_uris = []
         sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope='playlist-modify-public', client_id="612210be399a424788083d9bcb443bfd", client_secret="abb9b871ac1d4742b04b678285a1834f", redirect_uri="http://localhost:8888/callback"))
@@ -79,9 +79,9 @@ def convert_playlist():
         try:
             create_spotify_playlist(spotify_user_id, spotify_uris)
         except Exception:
-            messagebox.showerror("Error", "Invalid Spotify user ID. Please check the ID and try again.")
+            messagebox.showerror("Error", "Invalid Spotify User ID. Please check the ID and try again.")
             return
-        messagebox.showinfo("Successful", "The YouTube Music playlist has been converted to a Spotify playlist.")
+        messagebox.showinfo("Successful", "The YouTube Music Playlist has been converted to a Spotify playlist.")
     except Exception as e:
         messagebox.showerror("Error", "Unknown Error")
 
@@ -119,10 +119,5 @@ buttonExit.place(relx=0.5, rely=0.92, anchor=CENTER)
 window.mainloop()
 
 #TODO:
-# Message: Empty YouTube playlist ID - Done
-# Message: Empty Spotify user ID - Done
-# Message: Invalid YouTube playlist ID - Done
-# Message: Invalid Spotify user ID - Done
 # Message: YouTube API error message - In progress
 # Message: Spotify API error message - In progress
-# Message: Converation process complete message - Done
