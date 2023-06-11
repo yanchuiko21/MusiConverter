@@ -14,12 +14,23 @@ def center_window(window, width, height):
 
 # Getting the YouTube playlist
 def get_youtube_playlist(youtube_playlist_id):
-    youtube = build('youtube', 'v3', developerKey='AIzaSyAx3Y6F7GfEl5MkQQgVddx2l8VOuLMXnGU')
-    request = youtube.playlistItems().list(
-        part='snippet',
-        maxResults=50,
-        playlistId=youtube_playlist_id
-    )
+    try:
+        youtube = build('youtube', 'v3', developerKey='123')
+        # Just to check if the developerKey is valid we will make a test request
+        youtube.search().list(q='test', part='id', maxResults=1).execute()
+    except Exception as e:
+        messagebox.showerror("Error", "Invalid YouTube API. Please check the ID and try again.")
+        return []
+    try:
+        request = youtube.playlistItems().list(
+            part='snippet',
+            maxResults=50,
+            playlistId=youtube_playlist_id
+        )
+    except Exception as e:
+        messagebox.showerror("Error", "Invalid YouTube Music Playlist ID. Please check the ID and try again.")
+        return []
+        
     all_items = []
     while request is not None:
         response = request.execute()
