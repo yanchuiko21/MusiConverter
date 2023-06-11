@@ -15,7 +15,7 @@ def center_window(window, width, height):
 # Getting the YouTube playlist
 def get_youtube_playlist(youtube_playlist_id):
     try:
-        youtube = build('youtube', 'v3', developerKey='AIzaSyAx3Y6F7GfEl5MkQQgVddx2l8VOuLMXnGU')
+        youtube = build('youtube', 'v3', developerKey='AIzaSyBTz2n9n4v2Nj3RPTD59ncb-AcMFXNCPS0')
         youtube.search().list(q='test', part='id', maxResults=1).execute()
     except Exception as e:
         messagebox.showerror("Error", "Invalid YouTube API Key. Please check the Key and try again.")
