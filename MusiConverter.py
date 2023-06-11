@@ -15,24 +15,20 @@ def center_window(window, width, height):
 # Getting the YouTube playlist
 def get_youtube_playlist(youtube_playlist_id):
     try:
-        youtube = build('youtube', 'v3', developerKey='123')
+        youtube = build('youtube', 'v3', developerKey='AIzaSyAx3Y6F7GfEl5MkQQgVddx2l8VOuLMXnGU')
         # Just to check if the developerKey is valid we will make a test request
         youtube.search().list(q='test', part='id', maxResults=1).execute()
     except Exception as e:
-        messagebox.showerror("Error", "Invalid YouTube API. Please check the ID and try again.")
-        return []
+        messagebox.showerror("Error", "Invalid YouTube API Key. Please check the Key and try again.")
+        raise Exception("Invalid YouTube API Key")
+        
+    all_items = []
     try:
         request = youtube.playlistItems().list(
             part='snippet',
             maxResults=50,
             playlistId=youtube_playlist_id
         )
-    except Exception as e:
-        messagebox.showerror("Error", "Invalid YouTube Music Playlist ID. Please check the ID and try again.")
-        return []
-        
-    all_items = []
-    while request is not None:
         response = request.execute()
         for item in response['items']:
             video_id = item['snippet']['resourceId']['videoId']
@@ -47,6 +43,10 @@ def get_youtube_playlist(youtube_playlist_id):
                 artist = video_info['channelTitle']
                 all_items.append((title, artist))
         request = youtube.playlistItems().list_next(request, response)
+    except Exception as e:
+        messagebox.showerror("Error", "Invalid YouTube Music Playlist ID. Please check the ID and try again.")
+        raise Exception("Invalid YouTube Music Playlist ID")
+        
     return all_items
 
 # Creating the Spotify playlist
@@ -75,7 +75,6 @@ def convert_playlist():
         try:
             youtube_playlist = get_youtube_playlist(youtube_playlist_id)
         except Exception as e:
-            messagebox.showerror("Error", "Invalid YouTube Music Playlist ID. Please check the ID and try again.")
             return
         spotify_uris = []
         sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope='playlist-modify-public', client_id="612210be399a424788083d9bcb443bfd", client_secret="abb9b871ac1d4742b04b678285a1834f", redirect_uri="http://localhost:8888/callback"))
