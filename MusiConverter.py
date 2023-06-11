@@ -16,7 +16,6 @@ def center_window(window, width, height):
 def get_youtube_playlist(youtube_playlist_id):
     try:
         youtube = build('youtube', 'v3', developerKey='AIzaSyAx3Y6F7GfEl5MkQQgVddx2l8VOuLMXnGU')
-        # Just to check if the developerKey is valid we will make a test request
         youtube.search().list(q='test', part='id', maxResults=1).execute()
     except Exception as e:
         messagebox.showerror("Error", "Invalid YouTube API Key. Please check the Key and try again.")
@@ -29,20 +28,21 @@ def get_youtube_playlist(youtube_playlist_id):
             maxResults=50,
             playlistId=youtube_playlist_id
         )
-        response = request.execute()
-        for item in response['items']:
-            video_id = item['snippet']['resourceId']['videoId']
-            video_request = youtube.videos().list(
-                part='snippet',
-                id=video_id
-            )
-            video_response = video_request.execute()
-            if video_response['items']:
-                video_info = video_response['items'][0]['snippet']
-                title = video_info['title']
-                artist = video_info['channelTitle']
-                all_items.append((title, artist))
-        request = youtube.playlistItems().list_next(request, response)
+        while request is not None:  # iterate until no more pages
+            response = request.execute()
+            for item in response['items']:
+                video_id = item['snippet']['resourceId']['videoId']
+                video_request = youtube.videos().list(
+                    part='snippet',
+                    id=video_id
+                )
+                video_response = video_request.execute()
+                if video_response['items']:
+                    video_info = video_response['items'][0]['snippet']
+                    title = video_info['title']
+                    artist = video_info['channelTitle']
+                    all_items.append((title, artist))
+            request = youtube.playlistItems().list_next(request, response)
     except Exception as e:
         messagebox.showerror("Error", "Invalid YouTube Music Playlist ID. Please check the ID and try again.")
         raise Exception("Invalid YouTube Music Playlist ID")
