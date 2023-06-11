@@ -15,12 +15,11 @@ def center_window(window, width, height):
 # Getting the YouTube playlist
 def get_youtube_playlist(youtube_playlist_id):
     try:
-        youtube = build('youtube', 'v3', developerKey='AIzaSyBTz2n9n4v2Nj3RPTD59ncb-AcMFXNCPS0')
+        youtube = build('youtube', 'v3', developerKey='AIzaSyAGuywMYWB3M6dKEE8RH_-vUqKaADn1Nlg')
         youtube.search().list(q='test', part='id', maxResults=1).execute()
     except Exception as e:
         messagebox.showerror("Error", "Invalid YouTube API Key. Please check the Key and try again.")
         raise Exception("Invalid YouTube API Key")
-        
     all_items = []
     try:
         request = youtube.playlistItems().list(
@@ -128,6 +127,4 @@ buttonExit.place(relx=0.5, rely=0.92, anchor=CENTER)
 
 window.mainloop()
 
-#TODO:
-# Message: YouTube API error message - In progress
 # Message: Spotify API error message - In progress
