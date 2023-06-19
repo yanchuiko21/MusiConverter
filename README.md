@@ -5,7 +5,6 @@ MusiConverter is a small project that allows you to convert a YouTube Music play
 To run this project, you need the following:
 1. Python 3.x installed on your system.
 2. Required Python packages: tkinter, spotipy, and googleapiclient.
-3. 
 
 # Installation
 1. Clone or download the project files to your local machine.
